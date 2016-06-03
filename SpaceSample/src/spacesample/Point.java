@@ -8,10 +8,13 @@ package spacesample;
 /**
  *
  * @author xima
+ * classe que guarda as coordenadas dos pontos criados
  */
-public class Main {
-    public static void main(String[] args){
-        Container container = new Container(); 
-        container.display();
+public class Point {
+    public float x, y, z;
+    public Point(float x, float y, float z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 }
