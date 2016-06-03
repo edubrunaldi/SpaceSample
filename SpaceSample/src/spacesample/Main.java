@@ -5,12 +5,14 @@
  */
 package spacesample;
 
+import java.io.IOException;
+
 /**
  *
  * @author xima
  */
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         Container container = new Container(); 
         container.display();
     }

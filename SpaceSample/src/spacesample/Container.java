@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package spacesample;
+import codeanticode.glgraphics.GLModel;
+import codeanticode.glgraphics.GLGraphics;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.util.glu.GLU.gluPerspective;
 import java.util.Random;
@@ -11,6 +16,7 @@ import org.lwjgl.opengl.*;
 import org.lwjgl.*;
 import org.lwjgl.util.glu.GLU;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.util.vector.Vector3f;
 /**
  *
  * @author xima
@@ -18,7 +24,8 @@ import org.lwjgl.input.Keyboard;
 public class Container {
     private Point[] points_stars;
     private float speed_z, speed_x, rotate_x, rotate_y;
-    public Container(){
+    int objectDisplayList;
+    public Container() throws IOException{
         try{
             Display.setDisplayMode(new DisplayMode(800, 800));
             Display.setTitle("SpaceSample");
@@ -33,6 +40,8 @@ public class Container {
         //
         gluPerspective((float)30, 640f/480f, 0.001f, 100f);
         glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();       
+        
         
         create_stars();
         speed_x = 0.0f;
@@ -66,7 +75,7 @@ public class Container {
                 for(Point p: this.points_stars){
                     glVertex3f(p.x, p.y, p.z);
                 }
-            glEnd();
+        glEnd();
     }
     
     private void moveCamera(){
